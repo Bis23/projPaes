@@ -1,0 +1,6 @@
+CREATE DATABASE testeDB;
+
+USE testeDB;
+CREATE TABLE testeMesa (cel1 int, cel2 varchar(50));
+
+INSERT INTO testeMesa values (123, "Olá");
