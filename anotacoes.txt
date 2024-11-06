@@ -1,16 +1,35 @@
-Para instalar o módulo Mysql2:
-- npm install mysql2 (ou só mysql)
+Guia de Instalação e Configuração
 
-Configuração Inicial do Banco de Dados:
-CREATE DATABASE testeDB;
+1. Instalação das Dependências
+  MySQL2:
+  npm install mysql2
 
-USE testeDB;
-CREATE TABLE testeMesa (cel1 int, cel2 varchar(50));
+  ou, se preferir usar mysql:
+  
+  npm install mysql
 
-INSERT INTO testeMesa values (123, "Olá");
+  Express:
+  npm install express
 
-Para requisições http:
-- npm install express
+---
 
-Link explicando as requisições:
-https://www.youtube.com/watch?v=8WxOxAzccHc
+2. Configuração Inicial do Banco de Dados
+  2.1 Criando o Banco de Dados
+  Execute os seguintes comandos no MySQL para criar o banco de dados "testeDB":
+
+  CREATE DATABASE testeDB;
+  USE testeDB;
+
+  CREATE TABLE testeMesa (
+    cel1 INT,
+    cel2 VARCHAR(50)
+  );
+
+  INSERT INTO testeMesa VALUES (123, "Olá");
+
+---
+
+3. Requisições HTTP com Express
+  3.1 Link Útil
+  Para mais informações sobre requisições HTTP com Express, veja este vídeo:
+  https://www.youtube.com/watch?v=8WxOxAzccHc
