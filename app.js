@@ -1,36 +1,34 @@
-// app.js
+const mysql = require('mysql2');
 const db = require('./db');
+const express = require('express');
+const app = express();
+const port = 3000;
 
-// CONSULTA PELO BANCO DE DADOS
-db.query('SELECT * FROM testeMesa', (err, results) => {
-  if (err) {
-    console.error('Erro na consulta:', err);
-    return;
-  }
-  console.log('Resultados:', results);
+// Criando a conexão com o banco
+const connection = mysql.createConnection({
+  host: 'localhost',  // endereço
+  user: 'root',  //usuário
+  password: 'imtdb', // senha
+  database: 'testeDB' // nome do banco
 });
 
+// Conectando ao banco de dados
+connection.connect((err) => {
+  if (err) {
+    console.error('Erro ao conectar ao MySQL:', err);
+    return;
+  }
+  console.log('Conectado ao MySQL!');
+});
 
+app.get('/', (req, res) => {
+  db.query('SELECT * FROM testeMesa', (err, results) => {
+    if (err) {
+      console.error('Erro na consulta:', err);
+      return;
+    }
+    res.send(results);
+  });
+});
 
-// INSERINDO DADOS
-// const novoUsuario = {
-//     id: 456,
-//     nome: "João"
-//   };
-  
-//   // SQL para inserir dados
-//   // - Os parêntesis devem conter os nomes originais das colunas
-//   const sql = 'INSERT INTO testeMesa (cel1, cel2) VALUES (?, ?)';
-  
-//   db.query(sql, [novoUsuario.id, novoUsuario.nome], (err, results) => {
-//     if (err) {
-//       console.error('Erro ao inserir dados:', err);
-//       return;
-//     }
-//     console.log('Dados inseridos com sucesso! ID:', results.insertId);
-//   });
-
-
-
-// Fecha o banco de dados quando a conexão termina
-db.end();
+app.listen(port, () => console.log(`App rodando na porta ${port} -  http://localhost:${port}/`));
