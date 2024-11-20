@@ -12,7 +12,7 @@ db.query('SELECT * FROM testeMesa', (err, results) => {
 
 
 
-// INSERINDO DADOS
+// // INSERINDO DADOS
 // const novoUsuario = {
 //     id: 456,
 //     nome: "João"
@@ -30,7 +30,8 @@ db.query('SELECT * FROM testeMesa', (err, results) => {
 //     console.log('Dados inseridos com sucesso! ID:', results.insertId);
 //   });
 
-
+// Alterando dados
+// db.query()
 
 // Fecha o banco de dados quando a conexão termina
 db.end();
