@@ -2,34 +2,25 @@ Guia de Instalação e Configuração
 
 1. Instalação das Dependências
   MySQL2:
-  npm install mysql2
-
-  ou, se preferir usar mysql:
-  
-  npm install mysql
+  "npm install mysql2"
+  ou:
+  "npm install mysql"
 
   Express:
-  npm install express
+  "npm install express"
+
+  Body Parser (Talvez seja necessário):
+  "npm install body-parser"
 
 ---
 
 2. Configuração Inicial do Banco de Dados
-  2.1 Criando o Banco de Dados
-  Execute os seguintes comandos no MySQL para criar o banco de dados "testeDB":
+  2.1 Criando o Banco de Dados: Execute o script localizado no arquivo "meu_banco.txt"
 
-  CREATE DATABASE testeDB;
-  USE testeDB;
-
-  CREATE TABLE testeMesa (
-    cel1 INT,
-    cel2 VARCHAR(50)
-  );
-
-  INSERT INTO testeMesa VALUES (123, "Olá");
+  2.2 Verifique no arquivo "conexaoDB.js" se os dados de conexao estao correnpondentes.
 
 ---
 
-3. Requisições HTTP com Express
-  3.1 Link Útil
+3. Requisições HTTP com Express:
   Para mais informações sobre requisições HTTP com Express, veja este vídeo:
   https://www.youtube.com/watch?v=8WxOxAzccHc

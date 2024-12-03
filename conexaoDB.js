@@ -6,7 +6,7 @@ const connection = mysql.createConnection({
   host: 'localhost',    // ou o endereço do seu servidor MySQL
   user: 'root',  // seu usuário do MySQL
   password: 'biancadb', // sua senha do MySQL - imtdb/biancadb
-  database: 'testeDB' // o banco de dados que você deseja usar
+  database: 'meu_banco' // o banco de dados que você deseja usar
 });
 
 // Conectar ao banco de dados
