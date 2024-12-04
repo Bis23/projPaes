@@ -1,0 +1,30 @@
+body {
+    background-image: linear-gradient(rgb(32, 72, 135), rgb(50, 80, 150));
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+
+.font-weight-bold {
+    font-weight: bold;
+}
+
+font-weight-light {
+    font-weight: lighter;
+}
+
+img {
+
+    max-width: 100%;
+
+}
+
+:root {
+    --primary-color: rgb(32, 72, 135);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+}
