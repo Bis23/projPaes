@@ -1,0 +1,96 @@
+CREATE DATABASE meu_banco;
+USE meu_banco;
+
+-- Tabela aplicador_PJ
+CREATE TABLE aplicador_PJ (
+    RG CHAR(13) NOT NULL,
+    Nome VARCHAR(50) NOT NULL,
+    Nacionalidade VARCHAR(50),
+    EstCivil VARCHAR(10),
+    Profissao VARCHAR(30),
+    CPF CHAR(14) NOT NULL,
+    Email VARCHAR(255),
+    Endereco VARCHAR(255),
+    Cidade VARCHAR(100),
+    Telefone CHAR(17),
+    UF CHAR(2),
+    Curriculo MEDIUMTEXT,
+    URL VARCHAR(255),
+    Linkedin VARCHAR(255),
+    Portfolio VARCHAR(255),
+    Lattes VARCHAR(255),
+    Pagamento INTEGER,
+    Valor FLOAT,
+    Empresa VARCHAR(100),
+    CNPJ CHAR(18),
+    CNAE CHAR(7),
+    NomeResponsavel VARCHAR(200),
+    EmailResponsavel VARCHAR(30),
+    CPFResponsavel CHAR(14),
+    PRIMARY KEY (RG)
+);
+
+-- Tabela aplicador_RPA
+CREATE TABLE aplicador_RPA (
+    RG CHAR(13) NOT NULL,
+    Nome VARCHAR(50) NOT NULL,
+    Nacionalidade VARCHAR(50),
+    EstCivil VARCHAR(10),
+    Profissao VARCHAR(30),
+    CPF CHAR(14) NOT NULL,
+    Email VARCHAR(255),
+    Endereco VARCHAR(255),
+    Cidade VARCHAR(100),
+    Telefone CHAR(17),
+    UF CHAR(2),
+    Curriculo MEDIUMTEXT,
+    URL VARCHAR(255),
+    Linkedin VARCHAR(255),
+    Portfolio VARCHAR(255),
+    Lattes VARCHAR(255),
+    PRIMARY KEY (RG)
+);
+
+-- Tabela aplicador_Maua
+CREATE TABLE aplicador_Maua (
+    Email VARCHAR(255) NOT NULL,
+    RG CHAR(13) NOT NULL,
+    PRIMARY KEY (Email, RG)
+);
+
+-- Tabela Atividade
+CREATE TABLE Atividade (
+    Codigo INTEGER NOT NULL AUTO_INCREMENT,
+    Nome VARCHAR(50) NOT NULL,
+    Categoria VARCHAR(50),
+    PublicoAlvo VARCHAR(50),
+    Descricao MEDIUMTEXT,
+    Topicos TEXT,
+    Objetivos TEXT,
+    Metodologia TEXT,
+    Desafios TEXT,
+    Recursos TEXT,
+    CompetenciasTecnicas TEXT,
+    CompetenciasTransversais TEXT,
+    Tamanho TEXT,
+    PartComunidade TEXT,
+    IntDialogica TEXT,
+    Horario TEXT,
+    AplicadorRPA CHAR(13),
+    AplicadorPJ CHAR(13),
+    AplicadorMaua_Email VARCHAR(255),
+    AplicadorMaua_RG CHAR(13),
+    PRIMARY KEY (Codigo),
+    FOREIGN KEY (AplicadorRPA) REFERENCES aplicador_RPA (RG),
+    FOREIGN KEY (AplicadorPJ) REFERENCES aplicador_PJ (RG),
+    FOREIGN KEY (AplicadorMaua_Email, AplicadorMaua_RG) REFERENCES aplicador_Maua (Email, RG)
+);
+
+-- Tabela Imagens
+CREATE TABLE Imagens (
+    ID INTEGER NOT NULL AUTO_INCREMENT,
+    atividade INTEGER NOT NULL,
+    Imagem TIMESTAMP,
+    PRIMARY KEY (ID),
+    FOREIGN KEY (atividade) REFERENCES Atividade (Codigo)
+);
