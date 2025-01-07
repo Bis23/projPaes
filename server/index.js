@@ -2,15 +2,16 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const mysql = require('mysql')
+const mysql = require('mysql2')
 
 
 app.use(cors())
 
+// Conexão com o Banco de Dados
 var db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'pck2301',
+  password: 'suasenha',
   database: 'meu_banco'
 }); 
 
@@ -84,16 +85,16 @@ app.post('/aplicador/rpa/cadastro', (req, res) => {
 app.post('/aplicador/imt/cadastro', (req, res) => {
   // Extrai os dados do corpo da requisição 
   const {
-    RG, email
+    email, RG
   } = req.body; 
   // Validação para garantir que os campos obrigatórios estejam preenchidos
   if (!RG || !email) {
     return res.status(400).json({ error: 'Os campos RG e E-mail são brigatorios' });
   }
-  const sql = `REPLACE INTO aplicador_maua (RG, Email) VALUES (?, ?)`
+  const sql = `REPLACE INTO aplicador_maua (Email, RG) VALUES (?, ?)`
   // Array de valores para preencher os placeholders no comando SQL
   const values = [
-    RG, email
+    email, RG
   ];
   // Executando o SQL
   db.query(sql, values, (err, results) => {
